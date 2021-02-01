@@ -77,6 +77,7 @@ const buttons = {
 function ToDos() {
   const [toDoCards, setToDoCard] = useState([]);
   const domRef = useRef();
+  const barRef = useRef();
 
   function addToDoCard(e) {
     if (e.key === 'Enter' && e.target.value.replace(/\s+/g, '') !== '') {
@@ -100,6 +101,10 @@ function ToDos() {
     if(test2[name]) alert(test2[name][action])
   }
 
+  function doTest(e) {
+    console.log(barRef.current.style)
+  }
+
   useEffect(() => {
     if (toDoCards.length === 1) domRef.current.firstElementChild.className = 'todo-card';
     if (toDoCards.length === 2) domRef.current.firstElementChild.className = 'todo-card todo-card_one-elem';
@@ -109,13 +114,15 @@ function ToDos() {
   return (
     <div className={'Todos'}>
 
-      <div className="progress-bar">
-        <div className="bar-circle">
-          <p className="bar-circle__text">100%</p>
+      <div onClick={doTest} className="progress-bar">
+        <div className="progress-bar__circle">
+          <p className="progress-bar__text">100%</p>
         </div>
-        <div className="progress">
-          <div className="progress__right"/>
-          <div className="progress__left"/>
+        <div className="bar">
+          <div className="bar__mask"/>
+          <div className="bar__left" ref={barRef}/>
+          <div className="bar__right"/>
+          <div className="bar__shadow"/>
         </div>
       </div>
 

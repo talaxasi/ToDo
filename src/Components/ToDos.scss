@@ -198,84 +198,106 @@
 
 
 .progress-bar {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
   position: relative;
-  width: 100px;
-  height: 100px;
-  border-radius: 100%;
-  background-color: #fff;
-  box-shadow: 0px 0px 7px 1px rgba(34, 60, 80, 0.2) inset;
-}
 
-.bar-circle {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  position: absolute;
-  z-index: 3;
-  top: 12.5%;
-  left: 12.5%;
-  border-radius: 100%;
-  width: 75%;
-  height: 75%;
-  box-shadow: 0px 0px 11px 7px rgba(34, 60, 80, 0.2);
-  background-color: white;
+  &__circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    height: 75%;
+    border-radius: 100%;
+    background-color: white;
+    position: absolute;
+    top: 12.5%;
+    left: 12.5%;
+    z-index: 5;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.23);
+  }
 
   &__text {
     font-size: 120%;
   }
 }
 
-.progress .progress__right .progress__left {
+.bar .bar__left .bar__shadow {
   width: 100%;
   height: 100%;
   border-radius: 100%;
 }
 
-.progress__right .progress__left {
+.bar__right .bar__mask {
+  width: 50%;
+  height: 100%;
   position: absolute;
   top: 0;
-  background-color: #4cbe9c;
-  box-shadow: 0px 1px 11px 6px rgba(13, 13, 13, 0.36) inset;
+  animation-delay: 2s;
 }
 
-.progress {
+.bar {
+  background-color: white;
+  overflow: hidden;
   position: relative;
-  clip-path: inset(0 0 0 50%);
-  background-color: #fff;
-  box-shadow: 0px 0px 7px 1px rgba(34, 60, 80, 0.2) inset;
-  animation: clip-off forwards;
-  animation-delay: 1s;
-
-  &__right {
-    visibility: hidden;
-    right: 0;
-    clip-path: inset(0 0 0 50%);
-    animation: right forwards;
-    animation-delay: 1s;
-  }
 
   &__left {
+    position: relative;
+    top: 0;
     left: 0;
-    clip-path: inset(0 50% 0 0);
-    animation: left 2s linear forwards;
+    background-color: #4cbe9c;
+    animation: left 4s linear forwards;
+
+    &:after {
+      content: '';
+      width: 50%;
+      height: 100%;
+      background-color: white;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  &__right {
+    right: 0;
+    background-color: #4cbe9c;
+    visibility: hidden;
+    animation: right forwards;
+  }
+
+  &__mask {
+    z-index: 1;
+    left: 0;
+    background-color: white;
+    animation: mask-off forwards;
+  }
+
+  &__shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.23) inset;
+    z-index: 7;
   }
 }
 
-@keyframes  right{
-  100% {
-    visibility: visible;
-  }
-}
-
-@keyframes  left{
+@keyframes left{
   100% {
     transform: rotate(360deg);
   }
 }
 
-@keyframes  clip-off{
+@keyframes right{
   100% {
-    clip-path: inset(0 0 0 0);
+    visibility: visible;
+  }
+}
+
+@keyframes mask-off{
+  100% {
+    visibility: hidden;
   }
 }
 
