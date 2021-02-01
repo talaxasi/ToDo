@@ -1,8 +1,311 @@
-.ToDos {
+@font-face {
+  font-family: 'Exo2-Thin';
+  src: url('../fonts/Exo2-Thin.eot');
+  src: local('☺'), url('../fonts/Exo2-Thin.woff') format('woff'),
+  url('../fonts/Exo2-Thin.ttf') format('truetype'),
+  url('../fonts/Exo2-Thin.svg') format('svg');
+  font-weight: 100;
+  font-style: normal;
+}
+
+.Todos {
+  font-family: 'Exo2-Thin';
+
+  padding: 1px;
+}
+
+.todo-list {
   width: 600px;
   height: 500px;
-  margin: 100px auto 0;
+  padding-top: 1px;
+  margin: 10% auto;
 
-  background-color: #bf4242;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #f8f8f8;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+  0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 3px;
+  overflow: scroll;
+
+  &__input {
+
+    display: block;
+
+    max-width: 100%;
+    min-width: 90%;
+    height: 10%;
+    margin: 5% auto 0;
+
+    box-shadow: 0px 8px 12px -1px rgba(34, 60, 80, 0.27);
+    border-radius: 5px 5px 0 0;
+    border: 1px solid #95A5A6;
+    outline: none;
+
+    font-size: 30px;
+  }
+
+  &__wrap-todos {
+    display: flex;
+    width: 100%;
+    flex-direction: column-reverse;
+  }
 }
+
+@keyframes cardDown {
+  0% {
+    opacity: 0;
+    z-index: -1;
+    top: -40px;
+  }
+  100% {
+    opacity: 1;
+    z-index: 0;
+    top: 0;
+  }
+}
+
+.todo-card {
+  position: relative;
+
+  animation-name: cardDown;
+  animation-duration: .6s;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  max-width: 100%;
+  min-width: 90%;
+  height: 45px;
+  margin: 0 5%;
+  padding: 5px;
+
+  background-color: #f7f6f1;
+  white-space: nowrap;
+  box-shadow: 0px 2px 12px -1px rgba(34, 60, 80, 0.27);
+  border: 1px solid #95A5A6;
+  border-top: none;
+
+  &_one-elem:first-child:after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -20%;
+    left: 2.5%;
+    width: 95%;
+    height: 20%;
+
+    background-color: inherit;
+    box-shadow: inherit;
+    border: inherit;
+    border-top: 1px solid #95A5A6;
+  }
+
+  &_two-elem:first-child:after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -20%;
+    left: 2.5%;
+    width: 95%;
+    height: 20%;
+
+    background-color: inherit;
+    box-shadow: inherit;
+    border: inherit;
+    border-top: 1px solid #95A5A6;
+  }
+
+  &_two-elem:first-child:before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -35%;
+    left: 5%;
+    width: 90%;
+    height: 20%;
+
+    background-color: inherit;
+    box-shadow: inherit;
+    border: inherit;
+  }
+
+  &__buttons-group {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 25%;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+
+    width: 35px;
+    height: 35px;
+    margin: 0 5px;
+
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid #95A5A6;
+  }
+
+  &__name {
+    width: 25%;
+    margin: 0 1% 0 2%;
+  }
+
+  &__text {
+    width: 40%;
+    margin: 0 1%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:hover .todo-card__text-hover {
+      visibility: visible;
+      opacity: 1;
+      z-index: 2;
+    }
+  }
+
+  &__text-hover {
+    display: block;
+    visibility: hidden;
+    position: absolute;
+    width: 39%;
+    min-height: 100%;
+    max-height: 500%;
+    top: 0;
+
+    background-color: #ffffff;
+    border: 1px solid #95A5A6;
+    border-top: none;
+    padding: 1%;
+    opacity: 0;
+    white-space: pre-wrap;
+    transition: opacity .6s;
+    overflow: scroll;
+  }
+}
+
+.button-remove {
+  width: 35px;
+  height: 35px;
+  border: none;
+  background-color: inherit;
+}
+
+//#95A5A6 цвет иконок
+
+
+.progress-bar {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  background-color: #fff;
+  box-shadow: 0px 0px 7px 1px rgba(34, 60, 80, 0.2) inset;
+}
+
+.bar-circle {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  z-index: 3;
+  top: 12.5%;
+  left: 12.5%;
+  border-radius: 100%;
+  width: 75%;
+  height: 75%;
+  box-shadow: 0px 0px 11px 7px rgba(34, 60, 80, 0.2);
+  background-color: white;
+
+  &__text {
+    font-size: 120%;
+  }
+}
+
+.progress .progress__right .progress__left {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+
+.progress__right .progress__left {
+  position: absolute;
+  top: 0;
+  background-color: #4cbe9c;
+  box-shadow: 0px 1px 11px 6px rgba(13, 13, 13, 0.36) inset;
+}
+
+.progress {
+  position: relative;
+  clip-path: inset(0 0 0 50%);
+  background-color: #fff;
+  box-shadow: 0px 0px 7px 1px rgba(34, 60, 80, 0.2) inset;
+  animation: clip-off forwards;
+  animation-delay: 1s;
+
+  &__right {
+    visibility: hidden;
+    right: 0;
+    clip-path: inset(0 0 0 50%);
+    animation: right forwards;
+    animation-delay: 1s;
+  }
+
+  &__left {
+    left: 0;
+    clip-path: inset(0 50% 0 0);
+    animation: left 2s linear forwards;
+  }
+}
+
+@keyframes  right{
+  100% {
+    visibility: visible;
+  }
+}
+
+@keyframes  left{
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes  clip-off{
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
