@@ -1,0 +1,40 @@
+{
+  "members": {
+    "Олег Юрьевич": {
+      "name": "Олег Юрьевич",
+      "phone": "1-111-111-11-11",
+      "mail": "testOleg@mail.ru",
+      "location": "prospect"
+    },
+    "Бранислав Иванович": {
+      "name": "Бранислав Иванович",
+      "phone": "2-222-222-22-22",
+      "mail": "testBranislav@mail.ru",
+      "location": "street"
+    },
+    "Антон Антонов": {
+      "name": "Антон Антонов",
+      "phone": "3-333-333-33-33",
+      "mail": "testAnton@mail.ru",
+      "location": "square"
+    },
+    "Кузьмин И. undefined.": {
+      "name": "Кузьмин Игорь ",
+      "phone": "+7 (623) 947-2x-xx",
+      "location": "овтл",
+      "mail": "hffb@gmail.com"
+    },
+    "Кузьмин И.": {
+      "name": "Кузьмин Игорь",
+      "phone": "+1 (213) 123-41-24",
+      "mail": "ok@mail.ru",
+      "location": ""
+    },
+    "Osip K. E.": {
+      "name": "    Osip       Kirill    Evgen           ",
+      "phone": "+3 (452) 351-xx-xx",
+      "mail": "ok@mail.ru",
+      "location": ""
+    }
+  }
+}
